@@ -65,7 +65,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    //User functions
+    /**************************************************************
+     *     User DB functions
+     **************************************************************/
     public boolean userExists(String username){
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery =
@@ -97,7 +99,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    //Flight functions
+    /**************************************************************
+    *     Flight DB functions
+     **************************************************************/
     public boolean addFlight(String flightNum, String departure, String arrival, String departureTime, int seats, double price){
         SQLiteDatabase db = this.getWritableDatabase();
         Flight flight = new Flight(flightNum, departure, arrival, departureTime, seats, price);
@@ -115,6 +119,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // insert row
         db.insert(FlightSchema.FlightTable.NAME, null, values);
         return true;
+    }
+
+    private Cursor queryFlights(String whereClause, String[] whereArgs) {
+        Cursor cursor = db.query(
+                FlightSchema.FlightTable.NAME,
+                null, // columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null, // groupBy
+                null, // having
+                null  // orderBy
+        );
+        return cursor;
     }
 
     //Transaction functions

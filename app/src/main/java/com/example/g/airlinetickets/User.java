@@ -17,6 +17,12 @@ public class User {
         this.pword = pword;
     }
 
+    public User(UUID uuid, String uname, String pword) {
+        this.userID = uuid;
+        this.uname = uname;
+        this.pword = pword;
+    }
+
     public UUID getUserID() {
         return userID;
     }

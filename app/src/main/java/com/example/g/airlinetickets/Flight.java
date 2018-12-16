@@ -25,6 +25,16 @@ public class Flight {
         this.price = price;
     }
 
+    public Flight(UUID uuid, String flightNum, String departure, String arrival, String departureTime, int seats, double price) {
+        this.flightID = uuid;
+        this.flightNum = flightNum;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.departureTime = departureTime;
+        this.seats = seats;
+        this.price = price;
+    }
+
     public UUID getFlightID() {
         return flightID;
     }
